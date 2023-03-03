@@ -1,0 +1,15 @@
+<h2>Contact List</h2>
+<table class="table table-striped">
+    <thead>
+        <th>Name</th>
+        <th>Phone Number</th>
+        <th>User Id</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let contact of contacts">
+            <td>{{contact.name}}</td>
+            <td>{{contact.phoneNumber}}</td>
+            <td>{{contact.userId}}</td>            
+        </tr>
+    </tbody>
+</table>
