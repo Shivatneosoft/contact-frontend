@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Contact } from '../contact';
+import { ContactService } from "../contact.service";
 
 @Component({
   selector: 'app-contact-list',
@@ -8,12 +10,27 @@ import { Contact } from '../contact';
 })
 export class ContactListComponent implements OnInit {
  
-  contacts:Contact[] | undefined;
+  contacts:Contact[]=[];
 
-  constructor(){}
+  constructor(public contactService: ContactService,
+    private router:Router){}
 
-  ngOnInit(): void {
+  ngOnInit(): any {
+      this.contactService.getContactList().subscribe(data=>{
+        this.contacts = data.data;
+      })
+  }
 
+  updateButton(id:number){
+    this.router.navigate([`update-contact`,id])
+  }
+
+  deleteButton(id:number){
+    this.contactService.deleteContact(id).subscribe(
+      data=>{console.log(data.data);});
+    this.contactService.getContactList().subscribe(data=>{
+      this.contacts = data.data;
+    })
   }
 
 }

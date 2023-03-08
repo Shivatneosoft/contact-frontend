@@ -1,7 +1,7 @@
 export class Contact {
 
-    name: string | undefined ;
-    id: number | undefined;
-    phoneNumber: number | undefined;
-    userId:number | undefined;
+    contact_name!: string ;
+    contact_id!: number;
+    contact_number!: number;
+    user_id!:number;
 }
